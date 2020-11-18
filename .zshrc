@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
 else
-   export EDITOR='mvim'
+   export EDITOR='vim'
 fi
 
 HOSTNAME="$(hostname)"  # Conda clobbers HOST, so we save the real hostname into another variable.
