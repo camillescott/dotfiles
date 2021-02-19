@@ -1,28 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-source $HOME/.local/share/zsh/antigen.zsh
-antigen use oh-my-zsh
-
-antigen bundle git
-antigen bundle colored-man-pages
-antigen bundle colorize
-antigen bundle autojump  
-antigen bundle catimg  
-antigen bundle extract 
-antigen bundle git-extras 
-antigen bundle pip 
-antigen bundle vi-mode
-
-antigen bundle tonyseek/oh-my-zsh-virtualenv-prompt
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-#antigen theme bira
-antigen bundle $HOME/.local/share/oh-my-zsh/custom/themes/ bira.zsh-theme --no-local-clone
-
-antigen apply
-
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
