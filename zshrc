@@ -29,7 +29,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
 
-export PATH=$PATH:$HOME/bin
 export PATH="/usr/lib/ccache:$PATH"
 
 unsetopt AUTO_CD
