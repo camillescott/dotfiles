@@ -22,6 +22,21 @@ antigen bundle $HOME/.local/share/oh-my-zsh/custom/themes/ bira.zsh-theme --no-l
 
 antigen apply
 
+source $HOME/.local/share/zsh/zsh-snap/znap.zsh
+
+znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance}
+znap source tonyseek/oh-my-zsh-virtualenv-prompt
+export PATH=$PATH:$HOME/bin
+
+znap source ohmyzsh/ohmyzsh plugins/git
+znap source ohmyzsh/ohmyzsh plugins/colorized-man-pages
+znap source ohmyzsh/ohmyzsh plugins/colorize
+znap source ohmyzsh/ohmyzsh plugins/git catimg
+znap source ohmyzsh/ohmyzsh plugins/git extract
+znap source ohmyzsh/ohmyzsh plugins/git git-extras
+znap source ohmyzsh/ohmyzsh plugins/git pip
+
+znap source zsh-users/zsh-syntax-highlighting
 
 # User configuration
 
@@ -54,7 +69,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
 
-export PATH=$PATH:$HOME/bin
 export PATH="/usr/lib/ccache:$PATH"
 
 unsetopt AUTO_CD
