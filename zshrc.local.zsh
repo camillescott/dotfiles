@@ -25,7 +25,7 @@ export HISTTIMEFORMAT="%H:%M > "
 export PATH="/usr/lib/ccache:$PATH"
 
 unsetopt AUTO_CD
-COLS=`tput cols`
+
 
 alias ..="cd .."
 
