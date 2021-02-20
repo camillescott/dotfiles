@@ -46,4 +46,4 @@ export COLS=`tput cols`
 alias div="tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0"
 alias smalldiv="tput bold; tput setaf 4; centerf '********************'; tput sgr 0"
 
-source zshrc.local.zsh
+source $PWD/zshrc.local.zsh
