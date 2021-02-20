@@ -1,5 +1,5 @@
-ln -fs $PWD/vimrc $HOME/.vimrc
-ln -fs $PWD/condarc $HOME/.condarc
+ln -fs ~[dotfiles]/vimrc $HOME/.vimrc
+ln -fs ~[dotfiles]/condarc $HOME/.condarc
 
 
 centerf() {
@@ -46,4 +46,4 @@ export COLS=`tput cols`
 alias div="tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0"
 alias smalldiv="tput bold; tput setaf 4; centerf '********************'; tput sgr 0"
 
-source $PWD/zshrc.local.zsh
+source ~[dotfiles]/zshrc.local.zsh
