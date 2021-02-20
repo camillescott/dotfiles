@@ -43,29 +43,26 @@ echo
 echo
 tput sitm
 tput setaf 6
-echo welcome, "$USER" | center
+motd_welcome
 tput sgr 0
 echo
-date | center
+centerf "`date`"
 echo
-uname -o | center
-uname -r | center
-uname -m | center
+motd_unames
 echo
 smalldiv
 echo
-cat /proc/cpuinfo | grep -m 1 "model name" | awk -F":" '{print $2}' | center
-free -m | grep Mem | awk '{print $3 "M of "$2"M RAM used ("$7"M cached)"}' | center
+motd_cpuinfo
+motd_meminfo
 echo
 smalldiv
 echo
-#df -h | grep "home\|md2\|sdh1" | awk '{print $3 " of "$2 " ("$5") on "$6}' | center
-df -h | grep "data\|home\|\s\/$" | awk '{print $3 " of "$2 " ("$5") on "$6}' | center
+motd_dfinfo
 echo
 smalldiv
 tput sitm
 echo
-echo "`python -m this`" | center
+acenterf "`python -m this`"
 echo
 div
 tput sgr 0
