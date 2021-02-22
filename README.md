@@ -6,7 +6,7 @@ my dotfiles.
 
 install [zsh-snap](https://github.com/marlonrichert/zsh-snap#installation):
 
-    mkdir -p ~/.local/share/zsh & cd ~/.local/share/zsh
+    mkdir -p ~/.local/share/zsh && cd ~/.local/share/zsh
     git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git
 
 Install figlet:
