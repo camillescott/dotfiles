@@ -74,14 +74,14 @@ echo
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/camille/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('~/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/camille/miniconda/etc/profile.d/conda.sh" ]; then
-        . "/home/camille/miniconda/etc/profile.d/conda.sh"
+    if [ -f "~/miniconda/etc/profile.d/conda.sh" ]; then
+        . "~/miniconda/etc/profile.d/conda.sh"
     else
-        export PATH="/home/camille/miniconda/bin:$PATH"
+        export PATH="~/miniconda/bin:$PATH"
     fi
 fi
 unset __conda_setup
