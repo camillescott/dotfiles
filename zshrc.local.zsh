@@ -59,11 +59,6 @@ smalldiv
 echo
 motd_dfinfo
 echo
-#smalldiv
-#tput sitm
-#echo
-#acenterf "`python -m this`"
-#echo
 div
 tput sgr 0
 echo
