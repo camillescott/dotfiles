@@ -25,21 +25,38 @@ motd_welcome() {
 }
 
 motd_unames() {
-    centerf "`uname -o`"
-    centerf "`uname -r`"
-    centerf "`uname -m`"
+    if [[ `uname -s` == 'Darwin' ]]; then
+        centerf "`uname -srm`"
+    else
+        centerf "`uname -o`"
+        centerf "`uname -r`"
+        centerf "`uname -m`"
+    fi
 }
 
 motd_cpuinfo() {
-    centerf "`cat /proc/cpuinfo | grep -m 1 "model name" | awk -F":" '{print $2}'`"
+    if [[ `uname -s` == 'Darwin' ]]; then
+        centerf "`hostinfo | grep physically`"
+        centerf "`hostinfo | grep logically`"
+    else
+        centerf "`cat /proc/cpuinfo | grep -m 1 "model name" | awk -F":" '{print $2}'`"
+    fi
 }
 
 motd_meminfo() {
-    centerf "`free -m | grep Mem | awk '{print $3 "M of "$2"M RAM used ("$7"M cached)"}'`"
+    if [[ `uname -s` == 'Darwin' ]]; then 
+        centerf "`hostinfo | grep memory`"
+    else
+        centerf "`free -m | grep Mem | awk '{print $3 "M of "$2"M RAM used ("$7"M cached)"}'`"
+    fi
 }
 
 motd_dfinfo() {
-    acenterf "`df -h | grep "data\|home\|\s\/$" | awk '{print $3 " of "$2 " ("$5") on "$6}'`"
+    if [[ `uname -s` == 'Darwin' ]]; then 
+        acenterf "`df -h | grep /dev/disk1s1 | awk '{print $3,"of",$2,"("$5") used on "$9}'`"
+    else
+        acenterf "`df -h | grep "data\|home\|\s\/$" | awk '{print $3 " of "$2 " ("$5") on "$6}'`"
+    fi
 }
 
 export COLS=`tput cols`
