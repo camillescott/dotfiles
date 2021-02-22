@@ -37,7 +37,7 @@ div
 echo
 echo
 tput setaf 5
-figlet -c -w `tput cols` -f broadway $HOSTNAME
+figlet -c -w `tput cols` -f ~[dotfiles]/Broadway.flf $HOSTNAME
 tput sgr 0
 echo
 echo
