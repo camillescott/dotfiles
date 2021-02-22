@@ -15,7 +15,7 @@ Install figlet:
   
 clone dotfiles:
 
-    cd && git clone git clone git@github.com:camillescott/dotfiles.git
+    cd && git clone git@github.com:camillescott/dotfiles.git
 
 backup old `.zshrc` and link in new one from repo:
 
