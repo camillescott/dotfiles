@@ -24,9 +24,14 @@ export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
 export PATH="/usr/lib/ccache:$PATH"
 
+# automatically cd'ing into directories is annoying
 unsetopt AUTO_CD
 
+# save more history
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
 
+# nifty
 alias ..="cd .."
 
 #
