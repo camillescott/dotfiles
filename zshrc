@@ -19,5 +19,3 @@ znap source ohmyzsh/ohmyzsh plugins/pip
 
 znap source zsh-users/zsh-syntax-highlighting
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
