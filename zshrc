@@ -4,7 +4,7 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 source $HOME/.local/share/zsh/zsh-snap/znap.zsh
 
-znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions,ssh-agent}
+znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions,ssh-agent,history}
 znap source tonyseek/oh-my-zsh-virtualenv-prompt
 znap source camillescott/dotfiles
 znap prompt camillescott/dotfiles bira
