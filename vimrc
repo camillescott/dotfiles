@@ -7,6 +7,12 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " alignment foo
@@ -64,7 +70,7 @@ if &term =~ '256color' | set t_ut= | endif " Disable Background Color Erase (tmu
 
 augroup vimrc
    autocmd!
-   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=lightgrey guibg=black "| highlight MatchParen cterm=bold ctermfg=red ctermbg=NONE gui=bold guifg=red guibg=NONE
+   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=lightgrey guibg=NONE "| highlight MatchParen cterm=bold ctermfg=red ctermbg=NONE gui=bold guifg=red guibg=NONE
 augroup END
 
 filetype plugin indent on    " required
@@ -319,3 +325,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
 colorscheme miramare
+hi NonText ctermfg=NONE
+hi NonText ctermbg=NONE
+hi EndOfBuffer ctermfg=NONE
+hi EndOfBuffer ctermbg=NONE
