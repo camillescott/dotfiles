@@ -4,6 +4,8 @@ ln -fs ~[dotfiles]/condarc $HOME/.condarc
 
 ZSH_THEME_CONDA_ENV_PROMPT_PREFIX="‹"
 ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX="› "
+ZSH_THEME_PY_PROMPT_PREFIX="⟮py"
+ZSH_THEME_PY_PROMPT_SUFFIX="⟯ "
 
 conda_prompt_info() {
     if [ -n "$CONDA_DEFAULT_ENV" ]; then
@@ -11,6 +13,13 @@ conda_prompt_info() {
     fi
 }
 
+pyversion() {
+    echo "`python -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`"
+}
+
+py_prompt_info() {
+    echo '$ZSH_THEME_PY_PROMPT_PREFIX''$(pyversion)''$ZSH_THEME_PY_PROMPT_SUFFIX'
+}
 
 centerf() {
   if [[ -n "$2" ]]
