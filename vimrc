@@ -69,10 +69,7 @@ if &term =~ '256color' | set t_ut= | endif " Disable Background Color Erase (tmu
 " hi Pmenu ctermbg=238 gui=bold
 " set background=light
 
-augroup vimrc
-   autocmd!
-   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=lightgrey guibg=NONE "| highlight MatchParen cterm=bold ctermfg=red ctermbg=NONE gui=bold guifg=red guibg=NONE
-augroup END
+
 
 filetype plugin indent on    " required
 
@@ -324,9 +321,16 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+augroup vimrc
+   autocmd!
+   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=lightgrey guibg=NONE
+   autocmd ColorScheme * highlight MatchParen cterm=bold ctermfg=yellow ctermbg=brown gui=bold guifg=red guibg=NONE
+augroup END
 
 colorscheme miramare
 hi NonText ctermfg=NONE
 hi NonText ctermbg=NONE
 hi EndOfBuffer ctermfg=NONE
 hi EndOfBuffer ctermbg=NONE
+
+set guicursor=i:ver25-iCursor
