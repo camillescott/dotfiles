@@ -46,7 +46,8 @@ Plug 'franbach/miramare'
 
 " documentation plugins
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'heavenshell/vim-pydocstring'
+" Plug 'heavenshell/vim-pydocstring'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'alpertuna/vim-header'
 
 " highlighting support
@@ -127,13 +128,13 @@ let g:DoxygenToolkit_returnTag="@Returns   "
 let g:DoxygenToolkit_authorName="Camille Scott"
 
 " pydocstring
-let g:pydocstring_templates_dir = "/home/camille/.config/pydocstring/template"
+let g:pydocstring_formatter = 'numpy'
 
 " vim headers
 let g:header_auto_add_header = 0
 let g:header_field_author = 'Camille Scott'
 let g:header_field_author_email = 'camille.scott.w@gmail.com'
-let g:header_field_copyright = '(c) Camille Scott, 2020'
+let g:header_field_copyright = '(c) Camille Scott, 2021'
 let g:header_field_modified_by = 0
 let g:header_field_modified_timestamp = 0
 let g:header_field_license_id = 'MIT'
