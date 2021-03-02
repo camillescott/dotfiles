@@ -323,7 +323,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 augroup vimrc
    autocmd!
-   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=lightgrey guibg=NONE
+   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=black guibg=NONE
    autocmd ColorScheme * highlight MatchParen cterm=bold ctermfg=yellow ctermbg=brown gui=bold guifg=red guibg=NONE
 augroup END
 
@@ -332,5 +332,8 @@ hi NonText ctermfg=NONE
 hi NonText ctermbg=NONE
 hi EndOfBuffer ctermfg=NONE
 hi EndOfBuffer ctermbg=NONE
-
-set guicursor=i:ver25-iCursor
+hi CursorLine cterm=NONE ctermbg=233
+hi StatusLine ctermbg=235
+hi StatusLineNC ctermbg=234
+set cursorline
+"set guicursor=i:ver25-iCursor
