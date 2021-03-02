@@ -2,8 +2,8 @@ ln -fs ~[dotfiles]/vimrc $HOME/.vimrc
 ln -fs ~[dotfiles]/condarc $HOME/.condarc
 
 mkdir -p $HOME/.config/kitty
-ln -fs ~[dotfiles]/camillionaire.conf $HOME/.config/kitty/
-ln -fs ~[dotfiles]/kitty.config $HOME/.config/kitty/
+ln -fs ~[dotfiles]/camillionaire.conf $HOME/.config/kitty/camillionaire.conf
+ln -fs ~[dotfiles]/kitty.conf $HOME/.config/kitty/kitty.conf
 
 
 ZSH_THEME_CONDA_ENV_PROMPT_PREFIX="‹"
