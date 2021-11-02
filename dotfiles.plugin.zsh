@@ -5,8 +5,6 @@ mkdir -p $HOME/.config/kitty
 ln -fs ~[dotfiles]/camillionaire.conf $HOME/.config/kitty/camillionaire.conf
 ln -fs ~[dotfiles]/kitty.conf $HOME/.config/kitty/kitty.conf
 
-echo IN DOTFILES PLUGIN
-
 ZSH_THEME_CONDA_ENV_PROMPT_PREFIX="‹"
 ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX="› "
 ZSH_THEME_PY_PROMPT_PREFIX="⟮py"
@@ -84,10 +82,13 @@ motd_dfinfo() {
 }
 
 export COLS=`tput cols`
-#alias div="tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0"
+
 div() {
     tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0
 }
-alias smalldiv="tput bold; tput setaf 4; centerf '********************'; tput sgr 0"
+
+smalldiv() {
+    tput bold; tput setaf 4; centerf '********************'; tput sgr 0
+}
 
 source ~[dotfiles]/zshrc.local.zsh
