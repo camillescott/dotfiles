@@ -16,7 +16,7 @@ znap source ohmyzsh/ohmyzsh plugins/catimg
 znap source ohmyzsh/ohmyzsh plugins/extract
 znap source ohmyzsh/ohmyzsh plugins/git-extras
 znap source ohmyzsh/ohmyzsh plugins/pip
-znap source ohmyzsh/ohmyzsh plugs/ssh-agent
+znap source ohmyzsh/ohmyzsh plugins/ssh-agent
 
 znap source zsh-users/zsh-syntax-highlighting
 znap source unixorn/fzf-zsh-plugin
