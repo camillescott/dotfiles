@@ -5,6 +5,7 @@ mkdir -p $HOME/.config/kitty
 ln -fs ~[dotfiles]/camillionaire.conf $HOME/.config/kitty/camillionaire.conf
 ln -fs ~[dotfiles]/kitty.conf $HOME/.config/kitty/kitty.conf
 
+echo IN DOTFILES PLUGIN
 
 ZSH_THEME_CONDA_ENV_PROMPT_PREFIX="‹"
 ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX="› "
