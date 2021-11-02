@@ -56,7 +56,7 @@ Plug 'coyotebush/vim-pweave'
 Plug 'ivan-krukov/vim-snakemake'
 Plug 'tshirtman/vim-cython'
 Plug 'plasticboy/vim-markdown'
-
+Plug 'lepture/vim-jinja'
 " color parens
 Plug 'luochen1990/rainbow'
 
@@ -80,6 +80,7 @@ set lazyredraw
 " NerdTree mapping
 map <F2> :NERDTreeToggle<CR>
 
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi']
 
 function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
@@ -117,6 +118,7 @@ let g:rainbow_active = 1
 " vim-markdown options
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_math = 1
 
 " Doxygen Optiojs
 let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
@@ -137,32 +139,42 @@ let g:header_field_modified_timestamp = 0
 let g:header_field_license_id = 'MIT'
 
 " Use spaces by default
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4 " makes the spaces feel like real tabs
-set expandtab 
+"set tabstop=4
+"set shiftwidth=4
+"set softtabstop=4 " makes the spaces feel like real tabs
+"set expandtab 
 set nowrap
 set number
 
 " makefiles need tabs
-autocmd FileType make setlocal noexpandtab
+"autocmd FileType make setlocal noexpandtab
 
 " REMINDER: gq line wraps
 " text markup settings
 "au BufRead,BufNewFile *.md setlocal textwidth=100
 
 let orgfoldexpr=&foldexpr
-let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_frontmatter=1
-let g:vim_markdown_math = 1
+
 autocmd FileType markdown setlocal spell|setlocal textwidth=100
-autocmd FileType markdown set tabstop=4|set shiftwidth=4|set expandtab|set 
+autocmd FileType markdown set tabstop=4|set shiftwidth=4|set expandtab|set linebreak|set wrap
+"autocmd FileType html     setlocal ts=2 sw=2 expandtab
+
+augroup rmd_ft
+    au!
+    autocmd BufNewFile,BufRead *.Rmd set syntax=markdown|set linebreak|set wrap|set spell
+augroup END
+
 au BufRead,BufNewFile *.rst setlocal textwidth=100
 autocmd FileType rst setlocal spell
 au BufRead,BufNewFile *.tex setlocal textwidth=100
 autocmd FileType tex setlocal spell
 au BufRead,BufNewFile *.texw setlocal textwidth=100
 autocmd FileType Pweave setlocal spell
+
+augroup snakefile_ft
+  au!
+  autocmd BufNewFile,BufRead *.snakefile set syntax=snakemake|set tabstop=4|set shiftwidth=4|set expandtab|set
+augroup END
 
 
 " Make the leader comma
@@ -323,7 +335,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 augroup vimrc
    autocmd!
-   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=lightgrey guibg=NONE
+   autocmd ColorScheme * highlight Normal ctermbg=NONE guifg=black guibg=NONE
    autocmd ColorScheme * highlight MatchParen cterm=bold ctermfg=yellow ctermbg=brown gui=bold guifg=red guibg=NONE
 augroup END
 
@@ -332,5 +344,8 @@ hi NonText ctermfg=NONE
 hi NonText ctermbg=NONE
 hi EndOfBuffer ctermfg=NONE
 hi EndOfBuffer ctermbg=NONE
-
-set guicursor=i:ver25-iCursor
+hi CursorLine cterm=NONE ctermbg=233
+hi StatusLine ctermbg=235
+hi StatusLineNC ctermbg=234
+set cursorline
+"set guicursor=i:ver25-iCursor
