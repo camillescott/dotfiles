@@ -18,4 +18,5 @@ znap source ohmyzsh/ohmyzsh plugins/git-extras
 znap source ohmyzsh/ohmyzsh plugins/pip
 
 znap source zsh-users/zsh-syntax-highlighting
+znap source unixorn/fzf-zsh-plugin
 
