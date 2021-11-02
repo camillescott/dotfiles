@@ -84,7 +84,10 @@ motd_dfinfo() {
 }
 
 export COLS=`tput cols`
-alias div="tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0"
+#alias div="tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0"
+div() {
+    tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0
+}
 alias smalldiv="tput bold; tput setaf 4; centerf '********************'; tput sgr 0"
 
 source ~[dotfiles]/zshrc.local.zsh
