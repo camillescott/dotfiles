@@ -7,7 +7,7 @@ source $HOME/.local/share/zsh/zsh-snap/znap.zsh
 znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions,history}
 znap source tonyseek/oh-my-zsh-virtualenv-prompt
 znap source camillescott/dotfiles
-znap prompt camillescott/dotfiles bira
+znap prompt camillescott/dotfiles camillescott
 
 znap source ohmyzsh/ohmyzsh plugins/git
 znap source ohmyzsh/ohmyzsh plugins/colored-man-pages
