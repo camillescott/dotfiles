@@ -43,7 +43,7 @@ div
 echo
 echo
 tput setaf 5
-figlet -c -w `tput cols` -f ~[dotfiles]/Broadway.flf $HOSTNAME
+#figlet -c -w `tput cols` -f ~[dotfiles]/Broadway.flf $HOSTNAME
 tput sgr 0
 echo
 echo
@@ -61,10 +61,6 @@ echo
 motd_cpuinfo
 motd_meminfo
 echo
-smalldiv
-echo
-motd_dfinfo
-echo
 div
 tput sgr 0
 echo
@@ -75,17 +71,17 @@ echo
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/miniconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#__conda_setup="$('$HOME/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "$HOME/miniconda/etc/profile.d/conda.sh" ]; then
+#        . "$HOME/miniconda/etc/profile.d/conda.sh"
+#    else
+#        export PATH="$HOME/miniconda/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

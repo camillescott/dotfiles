@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 source $HOME/.local/share/zsh/zsh-snap/znap.zsh
