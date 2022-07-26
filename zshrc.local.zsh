@@ -23,7 +23,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
 export PATH="/usr/lib/ccache:$PATH"
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
 # automatically cd'ing into directories is annoying
 unsetopt AUTO_CD
@@ -34,6 +33,8 @@ export HISTSIZE=1000000000
 
 # nifty
 alias ..="cd .."
+
+alias vim="nvim"
 
 #
 # Pretty MOTD
