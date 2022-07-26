@@ -1,17 +1,8 @@
-# Make sure /etc/profile.d is sourced!
-if [ -d /etc/profile.d ]; then
-  for i in /etc/profile.d/*.sh; do
-    if [ -r $i ]; then
-      . $i
-    fi
-  done
-  unset i
-fi
-
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 source $HOME/.local/share/zsh/zsh-snap/znap.zsh
+source ~znap/dotfiles/site.zsh
 
 znap source ohmyzsh/ohmyzsh lib/{git,prompt_info_functions,theme-and-appearance,history}
 znap source tonyseek/oh-my-zsh-virtualenv-prompt
