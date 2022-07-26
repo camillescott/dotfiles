@@ -33,6 +33,7 @@ export HISTSIZE=1000000000
 
 alias ..="cd .."
 alias vim="nvim"
+alias sudo="sudo -E"
 
 #
 # Pretty MOTD

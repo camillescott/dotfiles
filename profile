@@ -1,2 +1,2 @@
-export SHELL=`which zsh`
+export SHELL=/bin/zsh
 [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l

@@ -1,15 +1,22 @@
-# If you come from bash you might have to change your $PATH.
+# Make sure /etc/profile.d is sourced!
+if [ -d /etc/profile.d ]; then
+  for i in /etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 source $HOME/.local/share/zsh/zsh-snap/znap.zsh
 
-#ZSH_CUSTOM=~[dotfiles]
-#ZSH_THEME="camillescott"
-znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions,history}
+znap source ohmyzsh/ohmyzsh lib/{git,prompt_info_functions,theme-and-appearance,history}
+znap source tonyseek/oh-my-zsh-virtualenv-prompt
 znap source ~znap/dotfiles
 znap prompt ~znap/dotfiles camillescott
-znap source tonyseek/oh-my-zsh-virtualenv-prompt
 
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim', 'nvim')
 znap source lukechilds/zsh-nvm
