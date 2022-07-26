@@ -135,7 +135,8 @@ def run_shell(cmd, in_directory=None, shell=False):
     else:
         in_directory = cwd
 
-    print(f'sh in {in_directory}:', ' '.join(cmd), end='')
+
+    print(f'in {in_directory}:', cmd, end='')
     try:
         p = subprocess.Popen(cmd,
                              stdout=subprocess.PIPE,
