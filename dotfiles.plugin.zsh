@@ -16,12 +16,15 @@ conda_prompt_info() {
     fi
 }
 
-pyversion() {
+pyversion() {    
     echo "`python -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`"
+    
 }
 
 py_prompt_info() {
-    echo '$ZSH_THEME_PY_PROMPT_PREFIX''$(pyversion)''$ZSH_THEME_PY_PROMPT_SUFFIX'
+    if (( $+commands[python] )); then
+        echo '$ZSH_THEME_PY_PROMPT_PREFIX''$(pyversion)''$ZSH_THEME_PY_PROMPT_SUFFIX'
+    fi
 }
 
 centerf() {
