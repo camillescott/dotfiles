@@ -8,7 +8,7 @@ import sys
 NVIM_APPIMAGE = 'https://github.com/neovim/neovim/releases/latest/download/nvim.appimage'
 ZSH_SNAP = 'https://github.com/marlonrichert/zsh-snap.git'
 NODEJS_VERSION = 'v14.20.0'
-
+ZSH_LOGIN_EMU = '[ -f /etc/zshrc ] && . /etc/zshrc; [ -f ~/.zshrc ] && . ~/.zshrc'
 
 def main():
     parser = argparse.ArgumentParser()
@@ -39,6 +39,12 @@ def main():
     nvimconf = os.path.join(home_dir, '.config', 'nvim')
     nvimconf_bak = backup_file(nvimconf, cur_time)
 
+    bash_profile = os.path.join(home_dir, '.bash_profile')
+    bash_profile_bak = backup_file(bash_profile, cur_time)
+
+    profile = os.path.join(home_dir, '.profile')
+    profile_bak = backup_file(profile, cur_time)
+
     print(f'* Setting up zsh!')
     
     create_dir(zsh_dir)
@@ -64,21 +70,33 @@ def main():
 
     print(f'...Linking {dotfiles} into {zsh_dir}: ', end='')
     try:
-        os.symlink(dotfiles, zsh_dir)
+        os.symlink(dotfiles, os.path.join(zsh_dir, 'dotfiles'))
     except FileExistsError:
         pass
     print('done.')
 
-    print(f'...Changing default shell to /bin/zsh: ', end='')
-    cmd = 'chsh -s /bin/zsh'
+    print(f'...Linking {profile} and {bash_profile} to {dotfiles}: ', end='')
+    try:
+        os.symlink(os.path.join(dotfiles, 'profile'), profile)
+    except FileExistsError:
+        pass
+    try:
+        os.symlink(os.path.join(dotfiles, 'bash_profile'), bash_profile)
+    except FileExistsError:
+        pass
+    print('done.')
+
+    
+    print(f'...Trying initial zsh init: ', end='')
+    cmd = f'zsh --login -c "{ZSH_LOGIN_EMU}; echo \$SHELL"'
     ret, out, err = run_shell(cmd, shell=True)
     if ret == 0:
         print('done.')
     else:
-        print(f'\n\tError setting default shell, exiting.')
+        print(f'\n\tError on zsh init, exiting.')
         print(f'\n\tstderr: {err}')
         sys.exit(ret)
-
+    
     print('* Setting up conda config!')
     condarc_df = os.path.join(dotfiles, 'condarc')
     print(f'...Linking {condarc} to {condarc_df}: ', end='')
@@ -107,10 +125,10 @@ def main():
         os.symlink(nvim_appimage_exe, nvim_exe)
     except FileExistsError as e:
         pass
-
+    
     print(f'* Initializing nvm!')
     print(f'...Installing nodejs {NODEJS_VERSION}: ', end='')
-    cmd = f'nvm install {NODEJS_VERSION}'
+    cmd = f'zsh --login -c  "{ZSH_LOGIN_EMU}; nvm install {NODEJS_VERSION}"'
     ret, out, err = run_shell(cmd, shell=True)
     if ret == 0:
         print(': done.')
@@ -155,6 +173,13 @@ def run_shell(cmd, in_directory=None, shell=False):
 def backup_file(src, cur_time):
     bak = f'{src}.{cur_time}.bak'
     print(f'...{src} => {bak}: ', end='')
+    
+    if os.path.islink(src):
+        target = os.readlink(src)
+        print(f'{src} is a symlink to {target}, removing.')
+        os.remove(src)
+        return None
+
     try:
         os.rename(src, bak)
     except FileNotFoundError:

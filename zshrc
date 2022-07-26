@@ -4,10 +4,12 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 source $HOME/.local/share/zsh/zsh-snap/znap.zsh
 
+#ZSH_CUSTOM=~[dotfiles]
+#ZSH_THEME="camillescott"
 znap source ohmyzsh/ohmyzsh lib/{git,theme-and-appearance,prompt_info_functions,history}
-znap source tonyseek/oh-my-zsh-virtualenv-prompt
 znap source ~znap/dotfiles
 znap prompt ~znap/dotfiles camillescott
+znap source tonyseek/oh-my-zsh-virtualenv-prompt
 
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim', 'nvim')
 znap source lukechilds/zsh-nvm
@@ -20,11 +22,9 @@ znap source ohmyzsh/ohmyzsh plugins/extract
 znap source ohmyzsh/ohmyzsh plugins/git-extras
 znap source ohmyzsh/ohmyzsh plugins/pip
 znap source ohmyzsh/ohmyzsh plugins/ssh-agent
+znap source ohmyzsh/ohmyzsh plugins/fzf
 
 znap source zsh-users/zsh-syntax-highlighting
 znap source unixorn/fzf-zsh-plugin
 
-
-
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+echo

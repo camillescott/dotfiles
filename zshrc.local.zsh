@@ -31,40 +31,37 @@ unsetopt AUTO_CD
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
 
-# nifty
 alias ..="cd .."
-
 alias vim="nvim"
 
 #
 # Pretty MOTD
 #
 
-div
-echo
-echo
-tput setaf 5
+#div
+#echo
+#echo
+#tput setaf 5
 #figlet -c -w `tput cols` -f ~[dotfiles]/Broadway.flf $HOSTNAME
-tput sgr 0
-echo
-echo
-tput sitm
-tput setaf 6
-motd_welcome
-tput sgr 0
-echo
-centerf "`date`"
-echo
-motd_unames
-echo
-smalldiv
-echo
-motd_cpuinfo
-motd_meminfo
-echo
-div
-tput sgr 0
-echo
+#tput sgr 0
+#echo
+#echo
+#tput sitm
+#tput setaf 6
+#motd_welcome
+#tput sgr 0
+#echo
+#centerf "`date`"
+#echo
+#motd_unames
+#echo
+#smalldiv
+#echo
+#motd_cpuinfo
+#motd_meminfo
+#echo
+#div
+#tput sgr 0
 
 #
 # End MOTD
@@ -84,5 +81,3 @@ echo
 #fi
 #unset __conda_setup
 # <<< conda initialize <<<
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
