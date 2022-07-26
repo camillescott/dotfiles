@@ -53,7 +53,7 @@ def main():
     elif ret != 0:
        print(f'\n\tUnknown git error, exiting.')
        print(f'\n\tstderr: {err}')
-       sys.exit(1)
+       sys.exit(ret)
     else:
         print(': done.')
 
@@ -68,6 +68,16 @@ def main():
     except FileExistsError:
         pass
     print('done.')
+
+    print(f'...Changing default shell to /bin/zsh: ', end='')
+    cmd = 'chsh -s /bin/zsh'
+    ret, out, err = run_shell(cmd, shell=True)
+    if ret == 0:
+        print('done.')
+    else:
+        print(f'\n\tError setting default shell, exiting.')
+        print(f'\n\tstderr: {err}')
+        sys.exit(ret)
 
     print('* Setting up conda config!')
     condarc_df = os.path.join(dotfiles, 'condarc')
