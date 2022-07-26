@@ -7,6 +7,7 @@ import sys
 
 NVIM_APPIMAGE = 'https://github.com/neovim/neovim/releases/latest/download/nvim.appimage'
 ZSH_SNAP = 'https://github.com/marlonrichert/zsh-snap.git'
+NODEJS_VERSION = 'v14.20.0'
 
 
 def main():
@@ -97,6 +98,14 @@ def main():
     except FileExistsError as e:
         pass
 
+    print(f'* Initializing nvm!')
+    print(f'...Installing nodejs {NODEJS_VERSION}: ', end='')
+    cmd = f'nvm install {NODEJS_VERSION}'
+    ret, out, err = run_shell(cmd, shell=True)
+    if ret == 0:
+        print(': done.')
+    else:
+        print(f'\n\tError installing nodejs: {err}')
 
            
 def create_dir(new_dir):
@@ -109,7 +118,7 @@ def create_dir(new_dir):
         print('done.')
 
 
-def run_shell(cmd, in_directory=None):
+def run_shell(cmd, in_directory=None, shell=False):
     cwd = os.getcwd()
     if in_directory:
         os.chdir(in_directory)
@@ -120,7 +129,8 @@ def run_shell(cmd, in_directory=None):
     try:
         p = subprocess.Popen(cmd,
                              stdout=subprocess.PIPE,
-                             stderr=subprocess.PIPE)
+                             stderr=subprocess.PIPE,
+                             shell=shell)
         (out, err) = p.communicate()
 
         out = out.decode('utf-8')
