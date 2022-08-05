@@ -14,6 +14,22 @@ local current_dir='%{$terminfo[bold]$fg[blue]%}%~ %{$reset_color%}'
 local git_branch='$(git_prompt_info)'
 local rvm_ruby='$(ruby_prompt_info)'
 
+conda_prompt_info() {
+    if [ -n "$CONDA_DEFAULT_ENV" ]; then
+        echo "$ZSH_THEME_CONDA_ENV_PROMPT_PREFIX$CONDA_DEFAULT_ENV$ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX"
+    fi
+}
+
+pyversion() {    
+    echo "`python -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`"
+    
+}
+
+py_prompt_info() {
+    if (( $+commands[python] )); then
+        echo '$ZSH_THEME_PY_PROMPT_PREFIX''$(pyversion)''$ZSH_THEME_PY_PROMPT_SUFFIX'
+    fi
+}
 
 venv_prompt=''
 if [[ virtualenv_prompt_info ]]; then
