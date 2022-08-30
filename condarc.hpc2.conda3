@@ -1,0 +1,8 @@
+channels:
+  - biobakery
+  - bioconda
+  - r
+  - conda-forge
+  - defaults
+  
+auto_activate_base: false
