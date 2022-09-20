@@ -15,6 +15,7 @@ def main():
     parser.add_argument('--user', '-u', default='camw')
     parser.add_argument('--home-root', default='/home')
     parser.add_argument('--dotfiles')
+    parser.add_argument('--no-backup', action='store_true', default=False)
     args = parser.parse_args()
 
     home_dir = os.path.join(args.home_root, args.user)
@@ -29,21 +30,27 @@ def main():
 
     print(f'Initializing {home_dir}...')
 
-    print('* Making backups of config files!')
-    zshrc = os.path.join(home_dir, '.zshrc')
-    zshrc_bak = backup_file(zshrc, cur_time)
+    if args.no_backup:
+        print('* SKIPPING config file backups!')
+    else:
+        print('* Making backups of config files!')
+        zshrc = os.path.join(home_dir, '.zshrc')
+        zshrc_bak = backup_file(zshrc, cur_time)
 
-    condarc = os.path.join(home_dir, '.condarc')
-    condarc_bak = backup_file(condarc, cur_time)
+        condarc = os.path.join(home_dir, '.condarc')
+        condarc_bak = backup_file(condarc, cur_time)
 
-    nvimconf = os.path.join(home_dir, '.config', 'nvim')
-    nvimconf_bak = backup_file(nvimconf, cur_time)
+        gitconfig = os.path.join(home_dir, '.gitconfig')
+        gitconfig_bak = backup_file(gitconfig, cur_time)
 
-    bash_profile = os.path.join(home_dir, '.bash_profile')
-    bash_profile_bak = backup_file(bash_profile, cur_time)
+        nvimconf = os.path.join(home_dir, '.config', 'nvim')
+        nvimconf_bak = backup_file(nvimconf, cur_time)
 
-    profile = os.path.join(home_dir, '.profile')
-    profile_bak = backup_file(profile, cur_time)
+        bash_profile = os.path.join(home_dir, '.bash_profile')
+        bash_profile_bak = backup_file(bash_profile, cur_time)
+
+        profile = os.path.join(home_dir, '.profile')
+        profile_bak = backup_file(profile, cur_time)
 
     print(f'* Setting up zsh!')
     
@@ -101,6 +108,12 @@ def main():
     condarc_df = os.path.join(dotfiles, 'condarc')
     print(f'...Linking {condarc} to {condarc_df}: ', end='')
     os.symlink(condarc_df, condarc)
+    print('done.')
+
+    print('* Setting up git config!')
+    gitconfig_df = os.path.join(dotfiles, 'gitconfig')
+    print(f'...Link {gitconfig} to {gitconfig_df}: ', end='')
+    os.symlink(gitconfig_df, gitconfig)
     print('done.')
 
     print('* Setting up nvim!')
