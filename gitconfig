@@ -1,0 +1,12 @@
+[alias]
+	graph = "log --oneline --abbrev-commit --all --graph --decorate --color"
+
+[init]
+	defaultBranch = "main"
+
+[pull]
+	rebase = false
+
+[user]
+	email = "cswel@ucdavis.edu"
+	name = "Camille Scott"
