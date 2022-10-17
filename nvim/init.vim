@@ -59,6 +59,7 @@ Plug 'ivan-krukov/vim-snakemake'
 Plug 'tshirtman/vim-cython'
 Plug 'plasticboy/vim-markdown'
 Plug 'lepture/vim-jinja'
+Plug 'rodjek/vim-puppet'
 
 call plug#end()
 
