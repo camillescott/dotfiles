@@ -20,6 +20,12 @@ conda_prompt_info() {
     fi
 }
 
+spack_prompt_info() {
+    if [ -n "$SPACK_ENV" ]; then
+        echo "⸨`basename $SPACK_ENV`⸩"
+    fi
+}
+
 pyversion() {    
     echo "`python -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`"
     
@@ -41,9 +47,14 @@ if [[ conda_prompt_info ]]; then
     conda_prompt='%{$fg[magenta]%}$(conda_prompt_info)%{$reset_color%}'
 fi
 
+spack_prompt=''
+if [[ spack_prompt_info ]]; then
+    spack_prompt='%{$fg[red]%}$(spack_prompt_info)%{$reset_color%}'
+fi
+
 ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
 
-PROMPT="╭─ ${conda_prompt}${venv_prompt}$(py_prompt_info)${user_host}${current_dir}${rvm_ruby}${git_branch}
+PROMPT="╭─ ${conda_prompt}${venv_prompt}${spack_prompt} $(py_prompt_info)${user_host}${current_dir}${rvm_ruby}${git_branch}
 ╰─%B${user_symbol}%b "
 RPROMPT="%B${return_code}%b"
 
