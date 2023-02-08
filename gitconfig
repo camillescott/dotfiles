@@ -10,3 +10,10 @@
 [user]
 	email = "cswel@ucdavis.edu"
 	name = "Camille Scott"
+[safe]
+	directory = /share/apps/spack-v0.19
+	directory = /share/apps/spack-ucdavis
+	directory = /share/apps/spack/spack-ucdavis
+	directory = /share/apps/franklin
+[credential]
+	helper = cache

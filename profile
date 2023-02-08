@@ -1,2 +1,2 @@
-export SHELL=/bin/zsh
-[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
+exec /usr/bin/zsh -x -ll
+
