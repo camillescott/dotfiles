@@ -1,4 +1,4 @@
-export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:/opt/hpccf/bin:$PATH
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 export ZSH_DISABLE_COMPFIX=true
 
@@ -13,7 +13,7 @@ ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX="› "
 ZSH_THEME_PY_PROMPT_PREFIX="⟮py"
 ZSH_THEME_PY_PROMPT_SUFFIX="⟯ "
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
@@ -29,6 +29,7 @@ export HISTSIZE=1000000000
 alias ..="cd .."
 alias vim="nvim"
 alias sudo="sudo -E"
+export EDITOR=nvim
 
 HOSTNAME="$(hostname)"  # Conda clobbers HOST, so we save the real hostname into another variable.
 precmd() {
