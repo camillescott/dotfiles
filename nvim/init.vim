@@ -143,10 +143,10 @@ let g:vim_markdown_math = 1
 let g:header_auto_add_header = 0
 let g:header_field_author = 'Camille Scott'
 let g:header_field_author_email = 'camille.scott.w@gmail.com'
-let g:header_field_copyright = '(c) Camille Scott, 2021'
+let g:header_field_copyright = '(c) Camille Scott, 2023'
 let g:header_field_modified_by = 0
 let g:header_field_modified_timestamp = 0
-let g:header_field_license_id = 'MIT'
+let g:header_field_license_id = 'Modified BSD'
 
 let orgfoldexpr=&foldexpr
 
@@ -155,8 +155,9 @@ let g:doge_doc_standard_python = 'google'
 let g:doge_python_settings = {'single_quotes': 1}
 
 " fzf
-nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
+nmap ; :Files<CR>
+nmap <Leader>g :GFiles<CR>
+nmap <Leader>t :Buffers<CR>
 nmap <Leader>r :Tags<CR>
 
 let g:vista_default_executive = 'coc'
