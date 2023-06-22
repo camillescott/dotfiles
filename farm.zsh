@@ -1,2 +1,3 @@
-export PATH=$PATH:/opt/csetools/bin
-source /share/apps/spack/share/spack/setup-env.sh
+export PATH=$PATH:/opt/hpccf/bin
+module load conda
+module load spack
