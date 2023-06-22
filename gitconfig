@@ -15,5 +15,6 @@
 	directory = /share/apps/spack-ucdavis
 	directory = /share/apps/spack/spack-ucdavis
 	directory = /share/apps/franklin
+	directory = /share/apps/spack/spack-v0.19
 [credential]
 	helper = cache
