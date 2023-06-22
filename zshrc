@@ -3,7 +3,7 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 export ZSH_DISABLE_COMPFIX=true
 
 source $HOME/.local/share/zsh/zsh-snap/znap.zsh
-source ~znap/dotfiles/site.zsh
+source ~[dotfiles]/site.zsh
 
 znap source ohmyzsh/ohmyzsh lib/{git,prompt_info_functions,theme-and-appearance,history}
 znap source tonyseek/oh-my-zsh-virtualenv-prompt
@@ -130,7 +130,7 @@ short_motd() {
 }
 
 short_motd
-znap prompt ~znap/dotfiles camillescott
+znap prompt dotfiles camillescott
 
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim', 'nvim')
 znap source lukechilds/zsh-nvm

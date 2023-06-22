@@ -16,5 +16,15 @@
 	directory = /share/apps/spack/spack-ucdavis
 	directory = /share/apps/franklin
 	directory = /share/apps/spack/spack-v0.19
+	directory = /etc/puppetlabs/code/environments/development
+	directory = /etc/puppetlabs/code/environments
 [credential]
 	helper = cache
+[maintenance]
+	repo = /home/camw/dotfiles
+	repo = /home/camw/.local/share/zsh/fzf-zsh-plugin
+	repo = /home/camw/.local/share/zsh/oh-my-zsh-virtualenv-prompt
+	repo = /home/camw/.local/share/zsh/ohmyzsh
+	repo = /home/camw/.local/share/zsh/zsh-nvm
+	repo = /home/camw/.local/share/zsh/zsh-snap
+	repo = /home/camw/.local/share/zsh/zsh-syntax-highlighting
