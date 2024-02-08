@@ -32,7 +32,7 @@ pyversion() {
 }
 
 py_prompt_info() {
-    if (( $+commands[python] )); then
+    if (( $+commands[python3] )); then
         echo '$ZSH_THEME_PY_PROMPT_PREFIX''$(pyversion)''$ZSH_THEME_PY_PROMPT_SUFFIX'
     fi
 }
