@@ -7,7 +7,7 @@ import sys
 
 NVIM_APPIMAGE = 'https://github.com/neovim/neovim/releases/latest/download/nvim.appimage'
 ZSH_SNAP = 'https://github.com/marlonrichert/zsh-snap.git'
-NODEJS_VERSION = 'v14.20.0'
+NODEJS_VERSION = 'v16.18.0'
 ZSH_LOGIN_EMU = '[ -f /etc/zshrc ] && . /etc/zshrc; [ -f ~/.zshrc ] && . ~/.zshrc'
 
 def main():
