@@ -18,6 +18,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
+export FZF_DEFAULT_COMMAND="rg --files"
 
 # automatically cd'ing into directories is annoying
 unsetopt AUTO_CD
