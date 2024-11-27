@@ -1,17 +1,23 @@
 export PATH=$HOME/.local/bin:/usr/local/bin:/opt/hpccf/bin:$PATH
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-export ZSH_DISABLE_COMPFIX=true
+zstyle ':omz:alpha:lib:git' async-prompt no
+zstyle ':znap:*' auto-compile no
+ZSH_DISABLE_COMPFIX=true
+export ZSH_HOME=$HOME/.local/share/zsh
+export ZNAP_HOME=$ZSH_HOME/zsh-snap
 
-source $HOME/.local/share/zsh/zsh-snap/znap.zsh
-source ~[dotfiles]/site.zsh
+if [[ ! -r $ZNAP_HOME/znap.zsh ]]
+then
+    mkdir -p $ZNAP_HOME
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git $ZNAP_HOME
+fi
+source $ZNAP_HOME/znap.zsh
+source $HOME/dotfiles/site.zsh
 
-znap source ohmyzsh/ohmyzsh lib/{git,prompt_info_functions,theme-and-appearance,history}
-znap source tonyseek/oh-my-zsh-virtualenv-prompt
-
-ZSH_THEME_CONDA_ENV_PROMPT_PREFIX="‹"
-ZSH_THEME_CONDA_ENV_PROMPT_SUFFIX="› "
-ZSH_THEME_PY_PROMPT_PREFIX="⟮py"
-ZSH_THEME_PY_PROMPT_SUFFIX="⟯ "
+if [[ ! -h $ZSH_HOME/dotfiles ]]
+then
+    ln -fs $HOME/dotfiles $ZSH_HOME/dotfiles
+fi
 
 export EDITOR='nvim'
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -19,6 +25,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
 export FZF_DEFAULT_COMMAND="rg --files"
+export SQUEUE_FORMAT2='JobID:10,UserName:20 ,Partition:15,Name:20 ,State:12,SubmitTime,TimeLeft:15,NumCPUs:7,NumNodes:7,tres-per-node:15,NodeList'
 
 # automatically cd'ing into directories is annoying
 unsetopt AUTO_CD
@@ -32,105 +39,28 @@ alias vim="nvim"
 alias sudo="sudo -E"
 export EDITOR=nvim
 
-HOSTNAME="$(hostname)"  # Conda clobbers HOST, so we save the real hostname into another variable.
-precmd() {
-    OLDHOST="${HOST}"
-    HOST="${HOSTNAME}"
+#HOSTNAME="$(hostname)"  # Conda clobbers HOST, so we save the real hostname into another variable.
+#precmd() {
+#    OLDHOST="${HOST}"
+#    HOST="${HOSTNAME}"
+#}
+
+#preexec() {
+#    HOST="${OLDHOST}"
+#}
+
+export NVIM_APPIMAGE='https://github.com/neovim/neovim/releases/latest/download/nvim.appimage'
+function get_nvim() {
+    mkdir -p $HOME/.local/bin
+    curl -L $NVIM_APPIMAGE > $HOME/.local/bin/nvim.appimage
+    chmod +x $HOME/.local/bin/nvim.appimage
+    ln -s $HOME/.local/bin/nvim.appimage $HOME/.local/bin/nvim
 }
 
-preexec() {
-    HOST="${OLDHOST}"
-}
 
-centerf() {
-  if [[ -n "$2" ]]
-  then
-    pad="$2"
-  else
-    pad=" "
-  fi
-
-  var=" ${1} "
-  print -r - ${(l[COLUMNS/2][ ]r[COLUMNS-COLUMNS/2][ ])var}
-}
-
-acenterf() {
-    local IFS=$'\n'
-    for line ($=1) centerf "$line" $2
-}
-
-motd_welcome() {
-    centerf "$USER @ $HOSTNAME"
-}
-
-motd_unames() {
-    if [[ `uname -s` == 'Darwin' ]]; then
-        centerf "`uname -srm`"
-    else
-        centerf "`uname -o`"
-        centerf "`uname -r`"
-        centerf "`uname -m`"
-    fi
-}
-
-motd_cpuinfo() {
-    if [[ `uname -s` == 'Darwin' ]]; then
-        centerf "`hostinfo | grep physically`"
-        centerf "`hostinfo | grep logically`"
-    else
-        centerf "`cat /proc/cpuinfo | grep -m 1 "model name" | awk -F":" '{print $2}'`"
-    fi
-}
-
-motd_meminfo() {
-    if [[ `uname -s` == 'Darwin' ]]; then 
-        centerf "`hostinfo | grep memory`"
-    else
-        centerf "`free -m | grep Mem | awk '{print $3 "M of "$2"M RAM used ("$7"M cached)"}'`"
-    fi
-}
-
-motd_dfinfo() {
-    if [[ `uname -s` == 'Darwin' ]]; then 
-        acenterf "`df -h | grep /dev/disk1s1 | awk '{print $3,"of",$2,"("$5") used on "$9}'`"
-    else
-        acenterf "`df -h | grep "data\|home\|\s\/$" | awk '{print $3 " of "$2 " ("$5") on "$6}'`"
-    fi
-}
-
-div() {
-    tput sgr 0; tput bold; tput setaf 4; printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =; tput sgr 0
-}
-
-smalldiv() {
-    tput bold; tput setaf 4; centerf '********************'; tput sgr 0
-}
-
-short_motd() {
-    div
-    tput setaf 5
-    tput sgr 0
-    echo
-    tput sitm
-    tput setaf 6
-    motd_welcome
-    tput sgr 0
-    echo
-    centerf "`date`"
-    echo
-    motd_unames
-    echo
-    smalldiv
-    echo
-    motd_cpuinfo
-    motd_meminfo
-    echo
-    div
-    tput sgr 0
-    echo
-}
-
-short_motd
+znap source ohmyzsh/ohmyzsh lib/{git,async_prompt,prompt_info_functions,theme-and-appearance,history}
+znap source tonyseek/oh-my-zsh-virtualenv-prompt
+znap source ohmyzsh/ohmyzsh plugins/{conda-env,git}
 znap prompt dotfiles camillescott
 
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim', 'nvim')
@@ -142,13 +72,18 @@ znap source ohmyzsh/ohmyzsh plugins/colorize
 znap source ohmyzsh/ohmyzsh plugins/catimg
 znap source ohmyzsh/ohmyzsh plugins/extract
 znap source ohmyzsh/ohmyzsh plugins/git-extras
+znap source ohmyzsh/ohmyzsh plugins/gitfast
 znap source ohmyzsh/ohmyzsh plugins/pip
+znap source ohmyzsh/ohmyzsh plugins/poetry
 znap source ohmyzsh/ohmyzsh plugins/ssh-agent
 znap source ohmyzsh/ohmyzsh plugins/fzf
 
 znap source zsh-users/zsh-syntax-highlighting
 znap source unixorn/fzf-zsh-plugin
 
-echo
+[[ -r $HOME/.local/bin/nvim.appimage ]] || get_nvim
+[[ -h $HOME/.config/nvim ]] || (mkdir -p $HOME/.config && ln -s $HOME/dotfiles/nvim $HOME/.config/nvim)
+[[ -r $HOME/.terminfo/x/xterm-kitty ]] || (mkdir -p $HOME/.terminfo/x && curl -L https://github.com/kovidgoyal/kitty/blob/f82c1a942e1df59fd0e37eb4f8a4448a29df95b6/terminfo/x/xterm-kitty > $HOME/.terminfo/x/xterm-kitty)
+[[ -r $HOME/.config/git/config ]] || (mkdir -p $HOME/.config/git && cp $HOME/dotfiles/gitconfig $HOME/.config/git/config)
 
 # vim: set filetype=zsh: 
