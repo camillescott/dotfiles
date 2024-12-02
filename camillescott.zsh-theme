@@ -1,5 +1,13 @@
 function prompt_hostname() {
-    python3 -c "import socket, sys; sys.stdout.write('.'.join(socket.getfqdn().split('.')[:2]))"
+    cat << EOF | python3
+import socket, sys
+h1, h2 = socket.getfqdn().split('.')[:2]
+if h1 == h2:
+    hostname = f'{h1}²'
+else:
+    hostname = f'{h1}.{h2}'
+sys.stdout.write(hostname)
+EOF
 }
 
 function spack_prompt_info() {
