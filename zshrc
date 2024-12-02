@@ -25,7 +25,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export TIMEFORMAT=$'\nreal %3R\tuser %3U\tsys %3S\tpcpu %P\n'
 export HISTTIMEFORMAT="%H:%M > "
 export FZF_DEFAULT_COMMAND="rg --files"
-export SQUEUE_FORMAT2='JobID:10,UserName:20 ,Partition:15,Name:20 ,State:12,SubmitTime,TimeLeft:15,NumCPUs:7,NumNodes:7,tres-per-node:15,NodeList'
+export SQUEUE_FORMAT2='JobID:10,UserName:16 ,Partition:15,Name:20 ,State:12,Reason:12 ,SubmitTime,TimeLeft:15,NumCPUs:7,NumNodes:7,tres-per-node:15,NodeList'
+export SQUEUE_SORT=V
 
 # automatically cd'ing into directories is annoying
 unsetopt AUTO_CD
