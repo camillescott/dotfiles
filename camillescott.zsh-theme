@@ -1,14 +1,14 @@
-local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
-
-if [[ $UID -eq 0 ]]; then
-    local user_host="%{$terminfo[bold]$fg[red]%}%n@%m %{$reset_color%}"
-    local user_symbol='#'
-else
-    local user_host="%{$terminfo[bold]$fg[green]%}%n%{$fg[yellow]%}@%{$fg[blue]%}%m %{$reset_color%}"
-    local user_symbol='$'
-fi
-
-local current_dir="%{$terminfo[bold]$FG[248]%}%~ %{$reset_color%}"
+function prompt_hostname() {
+    cat << EOF | python3
+import socket, sys
+h1, h2 = socket.getfqdn().split('.')[:2]
+if h1 == h2:
+    hostname = f'{h1}²'
+else:
+    hostname = f'{h1}.{h2}'
+sys.stdout.write(hostname)
+EOF
+}
 
 function spack_prompt_info() {
     [[ -n ${SPACK_ENV} ]] || return
@@ -22,6 +22,19 @@ function pyversion() {
 function py_prompt_info() {
     echo "$ZSH_THEME_PY_PROMPT_PREFIX$(pyversion)$ZSH_THEME_PY_PROMPT_SUFFIX"
 }
+
+local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+
+if [[ $UID -eq 0 ]]; then
+    local user_host="%{$terminfo[bold]$fg[red]%}%n@"'$(prompt_hostname)'" %{$reset_color%}"
+    local user_symbol='#'
+else
+    local user_host="%{$terminfo[bold]$fg[green]%}%n%{$fg[yellow]%}@%{$fg[blue]%}"'$(prompt_hostname)'" %{$reset_color%}"
+    local user_symbol='$'
+fi
+
+local current_dir="%{$terminfo[bold]$FG[248]%}%~ %{$reset_color%}"
+
 
 ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
 

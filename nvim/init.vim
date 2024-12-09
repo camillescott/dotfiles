@@ -159,6 +159,7 @@ nmap ; :Files<CR>
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>t :Buffers<CR>
 nmap <Leader>r :Tags<CR>
+nmap <Leader>f :Rg<CR>
 
 let g:vista_default_executive = 'coc'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -263,8 +264,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader><leader>f  <Plug>(coc-format-selected)
+nmap <leader><leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
