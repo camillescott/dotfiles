@@ -363,7 +363,7 @@ let g:lightline = {
       \ 'colorscheme': 'nightfox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'relativepath', 'modified', 'method' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
