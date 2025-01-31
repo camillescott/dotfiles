@@ -50,7 +50,7 @@ export EDITOR=nvim
 #    HOST="${OLDHOST}"
 #}
 
-export NVIM_APPIMAGE='https://github.com/neovim/neovim/releases/latest/download/nvim.appimage'
+export NVIM_APPIMAGE='https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage'
 function get_nvim() {
     mkdir -p $HOME/.local/bin
     curl -L $NVIM_APPIMAGE > $HOME/.local/bin/nvim.appimage
@@ -87,5 +87,6 @@ znap source unixorn/fzf-zsh-plugin
 [[ -r $HOME/.terminfo/x/xterm-kitty ]] || (mkdir -p $HOME/.terminfo/x && curl -L https://github.com/kovidgoyal/kitty/blob/f82c1a942e1df59fd0e37eb4f8a4448a29df95b6/terminfo/x/xterm-kitty > $HOME/.terminfo/x/xterm-kitty)
 [[ -r $HOME/.config/git/config ]] || (mkdir -p $HOME/.config/git && cp $HOME/dotfiles/gitconfig $HOME/.config/git/config)
 [[ -r $HOME/.config/tmux/tmux.conf ]] || (mkdir -p $HOME/.config/tmux && ln -s $HOME/dotfiles/tmux.conf $HOME/.config/tmux/tmux.conf)
+[[ $(nvm current) == 'system\n' ]] || nvm install v16.18.0
 
 # vim: set filetype=zsh: 
