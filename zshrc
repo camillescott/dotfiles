@@ -1,6 +1,7 @@
 export PATH=$HOME/.local/bin:/usr/local/bin:/opt/hpccf/bin:$PATH
 setopt interactivecomments
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent quiet yes
 zstyle ':omz:alpha:lib:git' async-prompt no
 zstyle ':znap:*' auto-compile no
 ZSH_DISABLE_COMPFIX=true
@@ -78,7 +79,7 @@ znap source ohmyzsh/ohmyzsh plugins/extract
 znap source ohmyzsh/ohmyzsh plugins/git-extras
 znap source ohmyzsh/ohmyzsh plugins/gitfast
 znap source ohmyzsh/ohmyzsh plugins/pip
-znap source ohmyzsh/ohmyzsh plugins/poetry
+#znap source ohmyzsh/ohmyzsh plugins/poetry
 znap source ohmyzsh/ohmyzsh plugins/ssh-agent
 znap source ohmyzsh/ohmyzsh plugins/fzf
 
