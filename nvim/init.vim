@@ -64,7 +64,7 @@ Plug 'rodjek/vim-puppet'
 call plug#end()
 
 " coc.nvim {{{
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-pyright', 'coc-yaml', 'coc-cmake', 'coc-r-lsp', 'coc-snippets', 'coc-tsserver']
 " }}}
 filetype plugin indent on    " required
 
@@ -363,7 +363,7 @@ let g:lightline = {
       \ 'colorscheme': 'nightfox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'relativepath', 'modified', 'method' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
