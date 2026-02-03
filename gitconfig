@@ -20,6 +20,7 @@
 	directory = /etc/puppetlabs/code/environments
 	directory = /etc/puppetlabs/code/environments/production
 	directory = /etc/puppetlabs/code/environments/production/data/accounts
+	directory = /home/conda-user/gpu_isac_2.3.4
 [credential]
 	helper = cache
 [maintenance]
