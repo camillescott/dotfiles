@@ -18,6 +18,8 @@
 	directory = /share/apps/spack/spack-v0.19
 	directory = /etc/puppetlabs/code/environments/development
 	directory = /etc/puppetlabs/code/environments
+	directory = /etc/puppetlabs/code/environments/production
+	directory = /etc/puppetlabs/code/environments/production/data/accounts
 	directory = /home/conda-user/gpu_isac_2.3.4
 [credential]
 	helper = cache
@@ -29,3 +31,8 @@
 	repo = /home/camw/.local/share/zsh/zsh-nvm
 	repo = /home/camw/.local/share/zsh/zsh-snap
 	repo = /home/camw/.local/share/zsh/zsh-syntax-highlighting
+	repo = /home/camw/.local/share/zsh/lukechilds/zsh-nvm
+	repo = /home/camw/.local/share/zsh/ohmyzsh/ohmyzsh
+	repo = /home/camw/.local/share/zsh/tonyseek/oh-my-zsh-virtualenv-prompt
+	repo = /home/camw/.local/share/zsh/unixorn/fzf-zsh-plugin
+	repo = /home/camw/.local/share/zsh/zsh-users/zsh-syntax-highlighting
