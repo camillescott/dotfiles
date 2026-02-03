@@ -62,6 +62,13 @@ function get_nvim() {
     ln -s $HOME/.local/bin/nvim.appimage $HOME/.local/bin/nvim
 }
 
+[[ -r $HOME/.local/bin/nvim.appimage ]] || get_nvim
+[[ -h $HOME/.config/nvim ]] || (mkdir -p $HOME/.config && ln -s $HOME/dotfiles/nvim $HOME/.config/nvim)
+[[ -r $HOME/.terminfo/x/xterm-kitty ]] || (mkdir -p $HOME/.terminfo/x && curl -L https://github.com/kovidgoyal/kitty/blob/f82c1a942e1df59fd0e37eb4f8a4448a29df95b6/terminfo/x/xterm-kitty > $HOME/.terminfo/x/xterm-kitty)
+[[ -r $HOME/.config/git/config ]] || (mkdir -p $HOME/.config/git && cp $HOME/dotfiles/gitconfig $HOME/.config/git/config)
+[[ -r $HOME/.config/tmux/tmux.conf ]] || (mkdir -p $HOME/.config/tmux && ln -s $HOME/dotfiles/tmux.conf $HOME/.config/tmux/tmux.conf)
+[[ -r $HOME/.ssh/config ]] || (mkdir -p $HOME/.ssh && ln -s $HOME/dotfiles/sshconfig $HOME/.ssh/config)
+[[ `nvm current` != 'system\n' ]] || nvm install v16.18.0
 
 znap source ohmyzsh/ohmyzsh lib/{git,async_prompt,prompt_info_functions,theme-and-appearance,history}
 znap source tonyseek/oh-my-zsh-virtualenv-prompt
@@ -84,14 +91,6 @@ znap source ohmyzsh/ohmyzsh plugins/ssh-agent
 znap source ohmyzsh/ohmyzsh plugins/fzf
 
 znap source zsh-users/zsh-syntax-highlighting
-znap source unixorn/fzf-zsh-plugin
-
-[[ -r $HOME/.local/bin/nvim.appimage ]] || get_nvim
-[[ -h $HOME/.config/nvim ]] || (mkdir -p $HOME/.config && ln -s $HOME/dotfiles/nvim $HOME/.config/nvim)
-[[ -r $HOME/.terminfo/x/xterm-kitty ]] || (mkdir -p $HOME/.terminfo/x && curl -L https://github.com/kovidgoyal/kitty/blob/f82c1a942e1df59fd0e37eb4f8a4448a29df95b6/terminfo/x/xterm-kitty > $HOME/.terminfo/x/xterm-kitty)
-[[ -r $HOME/.config/git/config ]] || (mkdir -p $HOME/.config/git && cp $HOME/dotfiles/gitconfig $HOME/.config/git/config)
-[[ -r $HOME/.config/tmux/tmux.conf ]] || (mkdir -p $HOME/.config/tmux && ln -s $HOME/dotfiles/tmux.conf $HOME/.config/tmux/tmux.conf)
-[[ -r $HOME/.ssh/config ]] || (mkdir -p $HOME/.ssh && ln -s $HOME/dotfiles/sshconfig $HOME/.ssh/config)
-[[ `nvm current` != 'system\n' ]] || nvm install v16.18.0
+#znap source unixorn/fzf-zsh-plugin
 
 # vim: set filetype=zsh: 
