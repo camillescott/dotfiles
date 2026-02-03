@@ -29,7 +29,7 @@ export HISTTIMEFORMAT="%H:%M > "
 export FZF_DEFAULT_COMMAND="rg --files"
 export SQUEUE_FORMAT2='JobID:10,UserName:16 ,Partition:15,Name:20 ,State:12,Reason:12 ,SubmitTime,TimeLeft:15,NumCPUs:7,MinMemory:12,NumNodes:7,tres-per-node:15,NodeList'
 export SQUEUE_SORT=V
-export SINFO_FORMAT='%17n %9P %.10T %.5c %.8z %.8m %20G %28E'
+#export SINFO_FORMAT='%17n %9P %.10T %.5c %.8z %.8m %20G %28E'
 export SINFO_SORT=+N,+P
 
 # automatically cd'ing into directories is annoying
@@ -91,6 +91,7 @@ znap source unixorn/fzf-zsh-plugin
 [[ -r $HOME/.terminfo/x/xterm-kitty ]] || (mkdir -p $HOME/.terminfo/x && curl -L https://github.com/kovidgoyal/kitty/blob/f82c1a942e1df59fd0e37eb4f8a4448a29df95b6/terminfo/x/xterm-kitty > $HOME/.terminfo/x/xterm-kitty)
 [[ -r $HOME/.config/git/config ]] || (mkdir -p $HOME/.config/git && cp $HOME/dotfiles/gitconfig $HOME/.config/git/config)
 [[ -r $HOME/.config/tmux/tmux.conf ]] || (mkdir -p $HOME/.config/tmux && ln -s $HOME/dotfiles/tmux.conf $HOME/.config/tmux/tmux.conf)
+[[ -r $HOME/.ssh/config ]] || (mkdir -p $HOME/.ssh && ln -s $HOME/dotfiles/sshconfig $HOME/.ssh/config)
 [[ `nvm current` != 'system\n' ]] || nvm install v16.18.0
 
 # vim: set filetype=zsh: 
