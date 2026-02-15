@@ -1,11 +1,17 @@
 function prompt_hostname() {
     cat << EOF | python3
 import socket, sys
-h1, h2 = socket.getfqdn().split('.')[:2]
-if h1 == h2:
-    hostname = f'{h1}²'
+tokens = socket.getfqdn().split('.')[:2]
+if len(tokens) == 2:
+    h1, h2 = tokens
+    if h1 == h2:
+        hostname = f'{h1}²'
+    else:
+        hostname = f'{h1}.{h2}'
+elif len(tokens) == 1:
+    hostname = tokens[0]
 else:
-    hostname = f'{h1}.{h2}'
+    hostname = '.'.join(tokens)
 sys.stdout.write(hostname)
 EOF
 }

@@ -54,7 +54,7 @@ export EDITOR=nvim
 #    HOST="${OLDHOST}"
 #}
 
-export NVIM_APPIMAGE='https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage'
+export NVIM_APPIMAGE=${NVIM_APPIMAGE:='https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage'}
 function get_nvim() {
     mkdir -p $HOME/.local/bin
     curl -L $NVIM_APPIMAGE > $HOME/.local/bin/nvim.appimage
@@ -93,3 +93,5 @@ znap source zsh-users/zsh-syntax-highlighting
 
 
 # vim: set filetype=zsh: 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
