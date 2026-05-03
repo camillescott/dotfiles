@@ -77,8 +77,7 @@ ZSH_THEME_SPACK_SUFFIX=" %f"
 #PROMPT="╭─ \$(spack_prompt_info)\$(conda_prompt_info)\$(virtualenv_prompt_info)\$(py_prompt_info)${user_host}${current_dir}"'$(ruby_prompt_info)$(git_prompt_info)'"
 #╰─%B${user_symbol}%b "
 
-PROMPT="╭─${user_host}${current_dir}\$(git_prompt_info)
-│ \$(spack_prompt_info)\$(conda_prompt_info)\$(virtualenv_prompt_info)\$(py_prompt_info)\$(ruby_prompt_info)
+PROMPT="╭─${user_host}${current_dir}\$(git_prompt_info) \$(spack_prompt_info)\$(conda_prompt_info)\$(virtualenv_prompt_info)\$(py_prompt_info)\$(ruby_prompt_info)
 %B${user_symbol}%b "
 
 RPROMPT="%B${return_code}%b"
