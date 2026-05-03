@@ -46,5 +46,5 @@ export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim', 'nvim')
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source $HOME/dotfiles/site.zsh
+[[ -r $HOME/dotfiles/site.zsh ]] && source $HOME/dotfiles/site.zsh
 # vim: set filetype=zsh: 
