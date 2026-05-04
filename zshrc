@@ -39,6 +39,11 @@ znap source tonyseek/oh-my-zsh-virtualenv-prompt
 znap source lukechilds/zsh-nvm
 znap source zsh-users/zsh-syntax-highlighting
 
+if [[ ! -r $ZSH_HOME/ensure-done ]]
+then
+    source $HOME/dotfiles/ensure.zsh
+fi
+
 #znap prompt dotfiles camillescott
 source $ZSH_HOME/dotfiles/camillescott.zsh-theme
 
@@ -46,5 +51,5 @@ export NVM_LAZY_LOAD_EXTRA_COMMANDS=('vim', 'nvim')
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source $HOME/dotfiles/site.zsh
+[[ -r $HOME/dotfiles/site.zsh ]] && source $HOME/dotfiles/site.zsh
 # vim: set filetype=zsh: 
