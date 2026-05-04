@@ -64,7 +64,7 @@ Plug 'rodjek/vim-puppet'
 call plug#end()
 
 " coc.nvim {{{
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-yaml', 'coc-cmake']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-jedi', 'coc-pyright', 'coc-yaml', 'coc-cmake', 'coc-r-lsp', 'coc-snippets', 'coc-tsserver']
 " }}}
 filetype plugin indent on    " required
 
@@ -159,6 +159,7 @@ nmap ; :Files<CR>
 nmap <Leader>g :GFiles<CR>
 nmap <Leader>t :Buffers<CR>
 nmap <Leader>r :Tags<CR>
+nmap <Leader>f :Rg<CR>
 
 let g:vista_default_executive = 'coc'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -263,8 +264,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader><leader>f  <Plug>(coc-format-selected)
+nmap <leader><leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -362,7 +363,7 @@ let g:lightline = {
       \ 'colorscheme': 'nightfox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ] ]
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'relativepath', 'modified', 'method' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',

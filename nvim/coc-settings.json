@@ -1,0 +1,35 @@
+{
+  "jedi.enable": true,
+  "jedi.hover.enable": true,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cc",
+        "cpp",
+        "c++",
+        "objc",
+        "objcpp"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      },
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".git/",
+        ".hg/"
+      ]
+    }
+  },
+  "pyright.inlayHints.parameterTypes": false,
+  "pyright.inlayHints.variableTypes": false,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportOptionalMemberAccess": "warning",
+    "reportUnusedCoroutine": "warning"
+  },
+  "snippets.ultisnips.pythonPrompt": false,
+}
