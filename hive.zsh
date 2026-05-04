@@ -1,3 +1,2 @@
 export PATH=$PATH:/opt/hpccf/bin
-module load -s conda
-[[ `hostname` == accounts-dev ]] && conda activate cheeto-dev
+[[ `hostname` == accounts-dev ]] && module load -s conda && conda activate cheeto-dev
