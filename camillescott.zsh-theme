@@ -66,8 +66,8 @@ if [[ $UID -eq 0 ]]; then
     local user_host="%{$terminfo[bold]$fg[red]%}%n@"'$(prompt_hostname)'" %{$reset_color%}"
     local user_symbol='#'
     env_info=
-elif [[ $USER -ne camille ]]; then
-    local user_host="%{$terminfo[bold]$fg[orange]%}%n@"'$(prompt_hostname)'" %{$reset_color%}"
+elif [[ ! "$USER" =~ '^(camille|camw)$' ]]; then
+    local user_host="%{$terminfo[bold]$fg[yellow]%}%n@"'$(prompt_hostname)'" %{$reset_color%}"
     local user_symbol='#'
 else
     local user_host="%{$terminfo[bold]$fg[green]%}󱑷 %{$fg[yellow]%}@%{$fg[blue]%}"'$(prompt_hostname)'" %{$reset_color%}"
