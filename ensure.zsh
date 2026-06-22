@@ -12,6 +12,6 @@ function get_nvim() {
 [[ -r $HOME/.config/git/config ]] || (mkdir -p $HOME/.config/git && cp $HOME/dotfiles/gitconfig $HOME/.config/git/config)
 [[ -r $HOME/.config/tmux/tmux.conf ]] || (mkdir -p $HOME/.config/tmux && ln -s $HOME/dotfiles/tmux.conf $HOME/.config/tmux/tmux.conf)
 [[ -r $HOME/.ssh/config ]] || (mkdir -p $HOME/.ssh && ln -s $HOME/dotfiles/sshconfig $HOME/.ssh/config)
-[[ `nvm current` != 'system\n' ]] || nvm install lts/krypton
+[[ `nvm current` != 'system\n' ]] || (nvm install lts/krypton && nvm alias default lts/krypton)
 
 touch $ZSH_HOME/ensure-done
