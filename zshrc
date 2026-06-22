@@ -18,10 +18,14 @@ unsetopt AUTO_CD
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
 setopt interactivecomments
+
+zstyle :omz:plugins:ssh-agent lazy yes
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle :omz:plugins:ssh-agent quiet yes
+
 zstyle ':omz:alpha:lib:git' async-prompt no
 zstyle ':znap:*' auto-compile no
+
 ZSH_DISABLE_COMPFIX=true
 export ZSH_HOME=$HOME/.local/share/zsh
 export ZNAP_HOME=$ZSH_HOME/zsh-snap
